@@ -1,9 +1,10 @@
-<h1 mat-dialog-title>For ROOM {{data.name}}</h1>
+<h1 mat-dialog-title>For ROOM {{data.room.title}}</h1>
 <div mat-dialog-content>
   <p>Please choose the time slot to book</p>
   <mat-form-field>
+
     <mat-select placeholder="Select">
-      <mat-option disabled="true" value="option">Option</mat-option>
+      <mat-option *ngFor="let booking of data.bookings" disabled="true" value="option">{{booking.slotId}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

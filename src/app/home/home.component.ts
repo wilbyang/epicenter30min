@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {RoomService} from '../services/room.service';
 import {Room} from '../models/room';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {TimeslotDialogComponent} from '../timeslot-dialog/timeslot-dialog.component';
 @Component({
   selector: 'app-home',
@@ -10,8 +10,7 @@ import {TimeslotDialogComponent} from '../timeslot-dialog/timeslot-dialog.compon
 })
 export class HomeComponent implements OnInit {
   rooms: Room[];
-  animal: string;
-  name: string;
+
   constructor(
     private roomService: RoomService,
     public dialog: MatDialog
@@ -31,17 +30,21 @@ export class HomeComponent implements OnInit {
     this.roomService.getRooms()
       .subscribe(rooms => this.rooms = rooms);
   }
-  openDialog(): void {
-    const dialogRef = this.dialog.open(TimeslotDialogComponent, {
-      width: '550px',
-      height: '550px',
-      data: {name: this.name, animal: this.animal}
+  openDialog(room: Room): void {
+    this.roomService.getThirtyMinBookings(room).subscribe(result => {
+
+      const dialogRef = this.dialog.open(TimeslotDialogComponent, {
+        width: '550px',
+        height: '550px',
+        data: {room, bookings: result}
+      });
+
+      dialogRef.afterClosed().subscribe(_ => {
+        console.log('The dialog was closed');
+
+      });
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
   }
 
 }

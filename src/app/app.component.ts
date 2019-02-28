@@ -16,11 +16,11 @@ export class AppComponent {
   mobileQuery: MediaQueryList;
   nav = [
     {
-      title: 'Home',
+      title: 'Rooms',
       path: '/'
     },
     {
-      title: 'My Account (Part 2)',
+      title: 'My Bookings',
       path: '/auth'
     }
   ];
