@@ -1,0 +1,7 @@
+
+
+<mat-card *ngFor="let room of rooms">
+  <h3>{{room.title | uppercase}}</h3>
+  <p>{{room.description}}</p>
+  <button (click)="openDialog()" mat-raised-button>BOOK THIS ROOM</button>
+</mat-card>
