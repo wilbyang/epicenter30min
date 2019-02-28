@@ -23,7 +23,7 @@ export class RoomService {
 
   }
   getRooms(): Observable<Room[]> {
-    return this.http.get<Room[]>('http://epicenter.local/api/v1/room_for_30_min?_format=json', httpOptions)
+    return this.http.get<Room[]>('https://epicenterstockholm.com/api/v1/room_for_30_min?_format=json', httpOptions)
       .pipe(
         tap(_ => this.log('fetched rooms')),
         catchError(this.handleError('', []))
