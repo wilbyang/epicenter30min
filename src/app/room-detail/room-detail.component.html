@@ -1,17 +1,26 @@
 
-<mat-card *ngIf="room">
-  <mat-card-title>
-    {{room.title | uppercase}}
 
-  </mat-card-title>
-  <mat-card-subtitle>
-    <div>{{time | date:'h:mm'}}</div>
-    {{time | date:'MMMM dd'}}
-  </mat-card-subtitle>
-  <mat-card-content>
-    {{room.description | uppercase}}
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="openDialog(room)">Book</button>
-  </mat-card-actions>
-</mat-card>
+
+
+<section class="container" *ngIf="room">
+  <div class="row" style="margin-bottom: 20px;">
+    <div class="col-md-4">
+      <div style="font-size: xx-large">{{time | date:'h:mm'}}</div>
+      <div style="font-size: large">{{time | date:'MMMM dd'}}</div>
+    </div> <!-- we use mat-card instead of div -->
+    <div class="col-md-8">
+      <div>Room:</div>
+      <h2><div>{{room.title}}</div></h2>
+      <button mat-raised-button (click)="openDialog(room)"> + ADD BOOKING</button>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-4" style="background-color: chocolate; padding:12px; margin: 4px; width: auto;" *ngFor="let booking of room.bookings">
+      <div style="color: white;padding: 12px;">{{booking.company}}</div>
+      <div style="color: aliceblue;padding: 12px;">{{booking.time | uppercase}}</div>
+      <!--<button mat-raised-button>Extend Booking</button>-->
+    </div>
+  </div>
+</section>

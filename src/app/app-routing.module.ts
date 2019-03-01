@@ -4,12 +4,12 @@ import { HomeComponent } from './home/home.component';
 import {RoomDetailComponent} from './room-detail/room-detail.component';
 
 const routes: Routes = [
+  { path: 'room/:id', component: RoomDetailComponent },
   { path: '', component: HomeComponent },
-  { path: 'room/:id', component: RoomDetailComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -9,6 +9,7 @@ import {RoomService} from '../services/room.service';
 export interface DialogData {
   room: Room;
   bookings: ThirtyMinBooking[];
+
 }
 @Component({
   selector: 'app-timeslot-dialog',
@@ -22,7 +23,7 @@ export class TimeslotDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<TimeslotDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private roomService: RoomService,
-    ) {}
+  ) {}
 
   onCancelClick(): void {
     this.dialogRef.close();
@@ -35,6 +36,8 @@ export class TimeslotDialogComponent implements OnInit {
     this.roomService.bookRoom(this.data.room, this.selectedSlot).subscribe(result => {
       if (result.errors) {
         console.log(result.errors);
+      } else {
+        location.reload();
       }
       this.dialogRef.close();
     });

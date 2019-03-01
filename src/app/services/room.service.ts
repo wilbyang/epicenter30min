@@ -5,14 +5,15 @@ import { Room } from '../models/room';
 import { catchError, tap } from 'rxjs/operators';
 import {ThirtyMinBooking} from '../models/30min-booking';
 
-const base64 = window.btoa('marpea:PassEpi4321');
+const base64 = window.btoa('epipad:3picenteR!');
+// const base64 = window.btoa('marpea:PassEpi4321');
 const httpOptions = {
   headers: new HttpHeaders({
     Authorization: `Basic ${base64}`
   })
 };
-// const baseUrl = 'https://epicenterstockholm.com';
-const baseUrl = 'http://epicenter.local';
+const baseUrl = 'https://epicenterstockholm.com';
+// const baseUrl = 'http://epicenter.local';
 @Injectable({
   providedIn: 'root'
 })

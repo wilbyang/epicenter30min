@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>For ROOM {{data.room.title}}</h1>
-<div mat-dialog-content>
+<div mat-dialog-content style="height: 80%;">
   <p>Please choose the time slot to book</p>
   <mat-form-field>
     <mat-select placeholder="Select" [(value)]="selectedSlot">
@@ -8,9 +8,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-<!--
-  <mat-chip-list>
-    <mat-chip *ngFor="let booking of data.bookings">{{booking.startTime}} - {{booking.endTime}}</mat-chip>
+  <!--<mat-chip-list>
+    <mat-chip *ngFor="let booking of data.room.bookings">{{booking.time}}</mat-chip>
   </mat-chip-list>-->
 </div>
 <div mat-dialog-actions>
