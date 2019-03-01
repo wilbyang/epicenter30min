@@ -2,13 +2,18 @@
 <div mat-dialog-content>
   <p>Please choose the time slot to book</p>
   <mat-form-field>
-
-    <mat-select placeholder="Select">
-      <mat-option *ngFor="let booking of data.bookings" disabled="true" value="option">{{booking.slotId}}</mat-option>
+    <mat-select placeholder="Select" [(value)]="selectedSlot">
+      <mat-option *ngFor="let booking of data.bookings" disabled="{{!booking.open}}" value="{{booking.slotId}}">
+        {{booking.startTime}} - {{booking.endTime}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
+<!--
+  <mat-chip-list>
+    <mat-chip *ngFor="let booking of data.bookings">{{booking.startTime}} - {{booking.endTime}}</mat-chip>
+  </mat-chip-list>-->
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>OK</button>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onConfirmClick()" cdkFocusInitial>OK</button>
 </div>

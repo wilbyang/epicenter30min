@@ -1,7 +1,13 @@
 
 
 <mat-card *ngFor="let room of rooms">
-  <h3>{{room.title | uppercase}}</h3>
-  <p>{{room.description}}</p>
-  <button (click)="openDialog(room)" mat-raised-button>BOOK THIS ROOM</button>
+  <h3>
+    <a routerLink="/room/{{room.id}}">
+    {{room.title | uppercase}}
+
+    </a>
+  </h3>
+  <!--<button mat-raised-button (click)="openDialog(room)">Book</button>-->
 </mat-card>
+
+

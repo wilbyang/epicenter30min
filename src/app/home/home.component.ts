@@ -19,13 +19,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getRooms();
   }
-  book(room: Room): void {
-    this.roomService.bookRoom(room.id).subscribe(result => {
-      if (result.errors) {
-        console.log(result.errors);
-      }
-    });
-  }
   getRooms(): void {
     this.roomService.getRooms()
       .subscribe(rooms => this.rooms = rooms);
@@ -33,15 +26,10 @@ export class HomeComponent implements OnInit {
   openDialog(room: Room): void {
     this.roomService.getThirtyMinBookings(room).subscribe(result => {
 
-      const dialogRef = this.dialog.open(TimeslotDialogComponent, {
+      this.dialog.open(TimeslotDialogComponent, {
         width: '550px',
         height: '550px',
         data: {room, bookings: result}
-      });
-
-      dialogRef.afterClosed().subscribe(_ => {
-        console.log('The dialog was closed');
-
       });
     });
 

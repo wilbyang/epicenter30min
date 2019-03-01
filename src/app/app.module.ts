@@ -9,12 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TimeslotDialogComponent } from './timeslot-dialog/timeslot-dialog.component';
 import {FormsModule} from '@angular/forms';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TimeslotDialogComponent
+    TimeslotDialogComponent,
+    RoomDetailComponent
   ],
   imports: [
     BrowserModule,
