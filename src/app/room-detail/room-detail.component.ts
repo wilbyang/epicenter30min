@@ -5,7 +5,7 @@ import {Room} from '../models/room';
 import {ClockService} from '../services/clock.service';
 import {TimeslotDialogComponent} from '../timeslot-dialog/timeslot-dialog.component';
 import {MatDialog} from '@angular/material';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-room-detail',
@@ -20,13 +20,19 @@ export class RoomDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private roomService: RoomService,
     private clockService: ClockService,
+    private location: Location,
     public dialog: MatDialog
   ) { }
+
+  goBack(): void {
+    this.location.back();
+  }
+
   getRoom(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.roomService.getRoom(id)
       .subscribe(room => {
-        room.bookings.sort((a, b) => {
+        room.bookings && room.bookings.sort((a, b) => {
           return a.time >= b.time ? 1 : -1;
         })
         this.room = room;

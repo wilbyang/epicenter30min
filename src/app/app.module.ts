@@ -11,6 +11,8 @@ import { TimeslotDialogComponent } from './timeslot-dialog/timeslot-dialog.compo
 import {FormsModule} from '@angular/forms';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [
     TimeslotDialogComponent
