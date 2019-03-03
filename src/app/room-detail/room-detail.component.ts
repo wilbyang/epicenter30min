@@ -34,7 +34,7 @@ export class RoomDetailComponent implements OnInit {
       .subscribe(room => {
         room.bookings && room.bookings.sort((a, b) => {
           return a.time >= b.time ? 1 : -1;
-        })
+        });
         this.room = room;
       });
   }
@@ -46,15 +46,11 @@ export class RoomDetailComponent implements OnInit {
   }
 
   openDialog(room: Room): void {
-    this.roomService.getThirtyMinBookings(room).subscribe(result => {
-
-      this.dialog.open(TimeslotDialogComponent, {
-        width: '550px',
-        height: '550px',
-        data: {room, bookings: result}
-      });
+    this.dialog.open(TimeslotDialogComponent, {
+      width: '550px',
+      height: '550px',
+      data: {room, availableTimeSlot: []}
     });
-
   }
 
 }

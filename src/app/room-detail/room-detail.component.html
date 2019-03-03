@@ -2,7 +2,7 @@
 
 
 
-<section class="container" *ngIf="room">
+<section class="container m-3" *ngIf="room">
   <div class="row" style="margin-bottom: 20px;">
     <div class="col-md col-sm col-lg d-flex flex-column align-items-center justify-content-center">
       <div style="font-size: xx-large">{{time | date:'h:mm'}}</div>
@@ -11,8 +11,8 @@
     <div class="col-md col-sm col-lg">
       <div>Room:</div>
       <h2><div>{{room.title}}</div></h2>
-      <span style="margin-right: 6px"><button mat-raised-button (click)="openDialog(room)"> + ADD BOOKING</button></span>
-      <span style="margin-left: 6px"><button mat-raised-button (click)="goBack()">Back</button></span>
+      <span class="m-2"><button mat-raised-button (click)="openDialog(room)"> + ADD BOOKING</button></span>
+      <span class="m-2"><button mat-raised-button (click)="goBack()">Back</button></span>
 
     </div>
 

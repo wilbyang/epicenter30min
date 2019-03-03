@@ -1,4 +1,4 @@
-export class ThirtyMinBooking {
+export interface AvailableTimeSlot {
   endTime: string;
   open: boolean;
   slotId: number;
