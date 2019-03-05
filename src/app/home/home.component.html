@@ -1,13 +1,7 @@
 
-<div class="container">
-  <h3 *ngFor="let room of rooms">
-    <a routerLink="/room/{{room.id}}">
+
+    <h2 class="m-3" align="center" *ngFor="let room of rooms">
+      <a routerLink="/room/{{room.id}}">
       {{room.title | uppercase}}
-
-    </a>
-  </h3>
-</div>
-
-  <!--<button mat-raised-button (click)="openDialog(room)">Book</button>-->
-
-
+      </a>
+    </h2>

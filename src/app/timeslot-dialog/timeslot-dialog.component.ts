@@ -41,12 +41,14 @@ export class TimeslotDialogComponent implements OnInit {
     console.log(this.data.room);
 
     this.roomService.bookRoom(this.data.room, this.selectedSlot, this.phone).subscribe(result => {
-      if (result.errors) {
-        console.log(result.errors);
+      if (result === 'operation failed') {
       } else {
-        location.reload();
+        this.dialogRef.close();
+        this.roomService.currentErrorMsg.next('Booking has been received!, Reloading...');
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
       }
-      this.dialogRef.close();
     });
 
   }

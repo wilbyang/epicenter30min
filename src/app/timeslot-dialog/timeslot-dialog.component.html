@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>For ROOM {{data.room.title}}</h1>
 <div mat-dialog-content style="height: 80%;">
-  <p>Use your telephone number to book</p>
+  <p>Use phone number to find your available time slots</p>
   <mat-form-field>
     <input matInput placeholder="Phone number" [(ngModel)]="phone">
   </mat-form-field>
-  <button mat-raised-button (click)="getAvailable()">Get available time slots</button>
+  <button class="m-2" mat-raised-button (click)="getAvailable()">Get available time slots</button>
   <mat-form-field *ngIf="data.availableTimeSlot.length">
     <mat-select placeholder="Select" [(value)]="selectedSlot">
       <mat-option *ngFor="let booking of data.availableTimeSlot" value="{{booking.slotId}}">

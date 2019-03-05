@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TimeslotDialogComponent } from './timeslot-dialog/timeslot-dialog.component';
 import {FormsModule} from '@angular/forms';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {DatePipe, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
