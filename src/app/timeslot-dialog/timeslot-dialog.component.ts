@@ -3,6 +3,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {Room} from '../models/room';
 import {AvailableTimeSlot} from '../models/available-slots';
 import {RoomService} from '../services/room.service';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -13,6 +14,7 @@ export interface DialogData {
 }
 @Component({
   selector: 'app-timeslot-dialog',
+  providers: [DatePipe],
   templateUrl: './timeslot-dialog.component.html',
   styleUrls: ['./timeslot-dialog.component.scss']
 })
@@ -24,12 +26,13 @@ export class TimeslotDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<TimeslotDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private roomService: RoomService,
+    private datePipe: DatePipe
   ) {}
 
   getAvailable(): void {
     const phone = this.phone.slice(-8);
     this.roomService.getAvailableTimeSlot(this.data.room, phone).subscribe(result => {
-      this.data.availableTimeSlot = result.filter(r => r.open);
+      this.data.availableTimeSlot = result.filter(r => r.open && r.endTime > this.datePipe.transform(new Date(), 'H:mm'));
     });
   }
   onCancelClick(): void {
