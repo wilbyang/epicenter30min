@@ -27,23 +27,23 @@ export class TimeslotDialogComponent implements OnInit {
   ) {}
 
   getAvailable(): void {
-    console.log(this.phone);
-    this.roomService.getAvailableTimeSlot(this.data.room, this.phone).subscribe(result => {
+    const phone = this.phone.slice(-8);
+    this.roomService.getAvailableTimeSlot(this.data.room, phone).subscribe(result => {
       this.data.availableTimeSlot = result.filter(r => r.open);
     });
   }
   onCancelClick(): void {
     this.dialogRef.close();
+    this.roomService.userBooking.next(false);
   }
 
   onConfirmClick(): void {
-    console.log(this.selectedSlot);
-    console.log(this.data.room);
-
-    this.roomService.bookRoom(this.data.room, this.selectedSlot, this.phone).subscribe(result => {
+    const phone = this.phone.slice(-8);
+    this.roomService.bookRoom(this.data.room, this.selectedSlot, phone).subscribe(result => {
       if (result === 'operation failed') {
       } else {
         this.dialogRef.close();
+        this.roomService.userBooking.next(false);
         this.roomService.currentErrorMsg.next('Booking has been received!, Reloading...');
         setTimeout(() => {
           location.reload();

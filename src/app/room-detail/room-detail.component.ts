@@ -56,6 +56,9 @@ export class RoomDetailComponent implements OnInit {
       this.time = now;
     });
     this.x = setInterval(() => {
+      if (this.roomService.userBooking.getValue()) {
+        return;
+      }
       location.reload();
     }, 1000 * 60);
   }
@@ -66,6 +69,7 @@ export class RoomDetailComponent implements OnInit {
       height: '550px',
       data: {room, availableTimeSlot: []}
     });
+    this.roomService.userBooking.next(true);
   }
 
 }

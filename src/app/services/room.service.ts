@@ -22,6 +22,7 @@ const httpOptions = {
 })
 export class RoomService {
   currentErrorMsg: BehaviorSubject<string> = new BehaviorSubject('');
+  userBooking: BehaviorSubject<boolean> = new BehaviorSubject(false);
   constructor(
     private http: HttpClient
   ) {
@@ -47,7 +48,7 @@ export class RoomService {
       field_timeslots: timeSlotId,
       field_room_30_min: room.id,
       phone
-    }
+    };
     return this.http.post<any>(`${environment.baseUrl}/api/v1/room_for_30_min?_format=json`, bookSlot, httpOptions)
       .pipe(
         tap(_ => this.log('booking room ')),
