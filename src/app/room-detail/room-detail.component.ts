@@ -39,7 +39,7 @@ export class RoomDetailComponent implements OnInit {
         if (room.bookings.length) {
           const bookings = room.bookings.filter(b => {
             const endtime = b.time.split('-')[1];
-            const now = ' ' + this.datePipe.transform(new Date(), 'h:mm');
+            const now = ' ' + this.datePipe.transform(new Date(), 'H:mm');
             return endtime > now;
           });
           bookings.sort((a, b) => {

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://epicenter.local'
+  baseUrl: 'http://epicenter.local',
+  paduser: 'epipad',
+  padpwd: '3picenteR!'
 };
 
 /*

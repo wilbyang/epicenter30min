@@ -7,8 +7,9 @@ import {AvailableTimeSlot} from '../models/available-slots';
 import {environment} from '../../environments/environment';
 
 
-const base64 = window.btoa('epipad:3picenteR!');
+// const base64 = window.btoa('epipad:3picenteR!');
 // const base64 = window.btoa('marpea:PassEpi4321');
+const base64 = window.btoa(`${environment.paduser}:${environment.padpwd}`);
 const httpOptions = {
   headers: new HttpHeaders({
     Authorization: `Basic ${base64}`
