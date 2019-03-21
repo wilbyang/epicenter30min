@@ -36,7 +36,7 @@ export class RoomDetailComponent implements OnInit {
     this.roomService.getRoom(id)
       .subscribe(room => {
         this.room = room;
-        if (room.bookings.length) {
+        if (room.bookings) {
           const bookings = room.bookings.filter(b => {
             const endtime = b.time.split('-')[1];
             const now = ' ' + this.datePipe.transform(new Date(), 'H:mm');
@@ -59,8 +59,8 @@ export class RoomDetailComponent implements OnInit {
       if (this.roomService.userBooking.getValue()) {
         return;
       }
-      location.reload();
-    }, 1000 * 60);
+      this.getRoom();
+    }, 1000 * 6);
   }
 
   openDialog(room: Room): void {
